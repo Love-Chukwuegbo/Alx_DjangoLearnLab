@@ -1,3 +1,4 @@
-command = book1.title = "Nineteen Eighty-Four"
-book1.save()
+>>book = Book.objects.create(title="1984", author="George Orwell", publication_year=1949)
+>>book.title = "Nineteen Eighty-Four"
+>>book1.save()
 output = None
