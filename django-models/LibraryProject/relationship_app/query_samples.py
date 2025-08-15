@@ -18,8 +18,9 @@ books_by_achebe= models.Book.objects.filter(author = achebe)
 
 # List all books in a library
 futo= models.Library(name="Futo Library")
-futo.books.add(*books_by_achebe)
+
 futo.save()
+models.Library.objects.get(name= "Futo Library" )
 
 models.Library.books.all()
 
