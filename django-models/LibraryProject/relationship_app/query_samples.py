@@ -17,14 +17,15 @@ books_by_achebe= Book.objects.filter(author = achebe)
 
 
 # List all books in a library
-futo= Library(name="Futo Library")
+library= Library(name="Futo Library")
 
-futo.save()
-book_list =[Library.objects.get(name= "Futo Library" )]
+library.save()
+library =Library.objects.get(name="Futo Library")
+book_list =library.books.all()
 
 
 #Retrieve the librarian for a library
-librarian1=Librarian(name="Njoku",  library =futo)
+librarian1=Librarian(name="Njoku",  library =library)
 librarian1.save()
 
-Librarian.objects.filter(library =futo)
+Librarian.objects.get(name ="Njoku")
