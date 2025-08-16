@@ -20,7 +20,8 @@ books_by_achebe= Book.objects.filter(author = achebe)
 library= Library(name="Futo Library")
 
 library.save()
-library =Library.objects.get(name="Futo Library")
+library_name = "Futo Library"
+library =Library.objects.get(name=library_name)
 book_list =library.books.all()
 
 
