@@ -8,9 +8,9 @@ Books =[Book(title= "Things fall apart", author= achebe),
         Book(title= "No longer at ease", author= achebe)]
 new_book =Book.objects.create(title= "The beautiful ones", author= achebe)
 Book.objects.bulk_create(Books)
+author_name ="Chinua Achebe"
 
-
-author = achebe
+author = Author.objects.get(name =author_name)
 books_by_achebe= Book.objects.filter(author = author)
 
 
