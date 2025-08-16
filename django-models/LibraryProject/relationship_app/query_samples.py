@@ -28,4 +28,4 @@ book_list =library.books.all()
 librarian1=Librarian(name="Njoku",  library =library)
 librarian1.save()
 
-Librarian.objects.get(name ="Njoku")
+Librarian.objects.get(library=library)
