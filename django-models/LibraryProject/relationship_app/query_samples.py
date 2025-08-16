@@ -1,19 +1,17 @@
 from .models import Library, Librarian,Author,Book
 
 # Query all books by a specific author
-achebe =Author(name = "Chinua Achebe")
-achebe.save()
+achebe =Author.objects.create(name = "Chinua Achebe")
+
 
 Books =[Book(title= "Things fall apart", author= achebe),
         Book(title= "No longer at ease", author= achebe)]
-
-new_book =Book(title= "The beautiful ones", author= achebe)
-
-
+new_book =Book.objects.create(title= "The beautiful ones", author= achebe)
 Book.objects.bulk_create(Books)
-new_book.save()
 
-books_by_achebe= Book.objects.filter(author = achebe)
+
+author = achebe
+books_by_achebe= Book.objects.filter(author = author)
 
 
 # List all books in a library
