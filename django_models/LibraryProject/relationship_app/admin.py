@@ -1,5 +1,4 @@
 from django.contrib import admin
-from  .models import Author, Book, Library, Librarian
+from .models import (Book, Author, Librarian, Library)
 
 # Register your models here.
-admin.register(Author, Book, Library, Librarian)
