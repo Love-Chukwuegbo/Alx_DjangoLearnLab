@@ -15,7 +15,7 @@ book3 = Book.objects.create(title="Purple Hibiscus", author=adichie)
 
 # Query all books by Achebe
 author_name = achebe
-author = Author.objects.get(name = author_name)
+author = Author.objects.get(name=author_name)
 books_by_achebe = Book.objects.filter(author=author)
 
 # Get library named 'lib1'
