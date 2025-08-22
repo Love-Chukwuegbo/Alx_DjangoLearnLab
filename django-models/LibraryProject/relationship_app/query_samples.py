@@ -26,5 +26,7 @@ library_lib1 = Library.objects.get(name=library_name)  # if one library expected
 books_in_lib1 = library_lib1.books.all()
 
 # Retrieve the librarian for library 'lib1'
-librarian_for_lib1 = Librarian.objects.get(library__name="lib1")
+lib1 = Library.objects.create(name= library_name)
+librarian_for_lib1 =Librarian(name= "some_name", library = lib1)
+get_librarian_for_lib1 = Librarian.objects.get(library=lib1)
 
