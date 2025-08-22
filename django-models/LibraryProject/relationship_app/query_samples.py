@@ -17,7 +17,8 @@ book3 = Book.objects.create(title="Purple Hibiscus", author=adichie)
 books_by_achebe = Book.objects.filter(author=achebe)
 
 # Get library named 'lib1'
-library_lib1 = Library.objects.get(name="lib1")  # if one library expected
+library_name = "lib1"
+library_lib1 = Library.objects.get(name=library_name)  # if one library expected
 
 # List all books in library 'lib1'
 books_in_lib1 = library_lib1.books.all()
