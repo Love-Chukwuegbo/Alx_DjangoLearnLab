@@ -9,7 +9,7 @@ from django.views.generic import ListView
 
 
 # Function-based view to list all books
-def booklist(request):
+def list_books(request):
     books = Book.objects.all()
     return render(request, "relationship_app/list_books.html", {"books": books})
 
@@ -18,6 +18,6 @@ class Librarylist(ListView):
     model = Library
     template_name = "relationship_app/library_detail.html"
 
-class LibraryDetail(DetailView):
+class LibraryDetailView(DetailView):
     model = Library
     template_name = "relationship_app/library_detail.html"
