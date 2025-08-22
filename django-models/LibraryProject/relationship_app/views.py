@@ -4,7 +4,9 @@ from django.shortcuts import render
 from django.shortcuts import render
 from .models import Book
 from .models import Library
-from django.views.generic import ListView,DetailView
+from django.views.generic.detail import DetailView
+from django.views.generic import ListView
+
 
 # Function-based view to list all books
 def booklist(request):
