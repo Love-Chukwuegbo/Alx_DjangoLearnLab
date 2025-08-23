@@ -30,3 +30,5 @@ lib1 = Library.objects.create(name= library_name)
 librarian_for_lib1 =Librarian(name= "some_name", library = lib1)
 get_librarian_for_lib1 = Librarian.objects.get(library=lib1)
 
+from django.contrib.auth.models import User
+user = User.objects.create_user("john", "lennon@thebeatles.com", "johnpassword")
