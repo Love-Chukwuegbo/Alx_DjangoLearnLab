@@ -12,7 +12,11 @@ urlpatterns = [
     path("admins/" , views.admin, name = "Admin"),
     path("librarian/", views.librarian, name = "Librarian"),
     path("member/", views.member, name = "Member"),
-    path("books/", list_books, name="All_books"),
+    path("books/", views.list_books, name="book_list"),
+    path("books/new/", views.add_book, name="new_book"),
+    path("books/<int:pk>/", views.book_detail, name="book_detail"),
+    path('books/<int:pk>/edit/', views.change_book, name='change_book'),
+    path("books/<int:pk>/delete/", views.delete_book, name="delete_book"),
     # path("libraries", Librarylist.as_view(), name = "All_Libraries"),
     path("libraries/<int:id>", LibraryDetailView.as_view(), name = "specific_library_books"),
 ]

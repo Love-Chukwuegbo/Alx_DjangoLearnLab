@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 
 # Create your views here.
 from django.shortcuts import render
@@ -14,9 +14,9 @@ from django.views.generic import CreateView
 from django.contrib.auth import login
 from django.contrib.auth import logout
 
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, permission_required
 from . import helpers
-
+from  . import forms
 # Function-based view to list all books
 def list_books(request):
     books = Book.objects.all()
@@ -58,3 +58,49 @@ def librarian(request):
 @user_passes_test(helpers.is_member)
 def member(request):
     render(request, "member_view.html")
+
+
+
+@permission_required("relationship_app.can_add_book")
+def add_book(request):
+    if request.method == "POST":
+
+        form = forms.CreateBook(request.POST)
+
+        if form.is_valid():
+            book = form.save()
+            return redirect("book_detail",pk = book.pk  )
+
+    else:
+        form = forms.CreateBook()
+    return render(request, "relationship_app/add_books.html", {"form":form} )
+    
+def book_detail(request, pk):
+    book = Book.objects.get(id=pk)
+    return render(request, "relationship_app/book_detail.html",{"book" : book})
+
+
+@permission_required("relationship_app.can_change_book")
+def change_book(request,pk):
+    book = get_object_or_404(Book, pk = pk)
+
+    if request.method == "POST":
+        form = forms.CreateBook(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect("book_detail", pk = book.pk)
+    else:
+        form=forms.CreateBook(instance= book)
+    
+    return render(request, "relationship_app/add_books.html",{ "form":form })
+    
+
+
+@permission_required("relationship_app.can_delete_book")
+def delete_book(request, pk):
+    book=get_object_or_404(book, pk=pk)
+    if request.method == "POST":
+        book.delete()
+        return redirect("book_list")
+    else:
+        return render(request," relationship_app/confirm_delete.html",{"book":book})
