@@ -8,13 +8,14 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+
 from django.views.generic import CreateView
 
 from django.contrib.auth import login
 from django.contrib.auth import logout
 
-from django.contrib.auth.decorators import user_passes_test, permission_required,login_required
+from django.contrib.auth.decorators import user_passes_test ,login_required
+from django.contrib.auth.decorators import permission_required
 from . import helpers
 from  . import forms
 # Function-based view to list all books
