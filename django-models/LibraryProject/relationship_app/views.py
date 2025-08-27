@@ -14,7 +14,7 @@ from django.views.generic import CreateView
 from django.contrib.auth import login
 from django.contrib.auth import logout
 
-from django.contrib.auth.decorators import user_passes_test, permission_required
+from django.contrib.auth.decorators import user_passes_test, permission_required,login_required
 from . import helpers
 from  . import forms
 # Function-based view to list all books
@@ -45,16 +45,19 @@ def register(request):
     return render(request, 'relationship_app/register.html', {'form': form})
 
 
-
+@login_required
 @user_passes_test(helpers.is_admin)
 def admin_view(request):
     return render(request, "relationship_app/admin_view.html")
 
 
+@login_required
 @user_passes_test(helpers.is_librarian)
 def librarian_view(request):
     return render(request, "relationship_app/librarian_view.html")
 
+
+@login_required
 @user_passes_test(helpers.is_member)
 def member_view(request):
     return render(request, "relationship_app/member_view.html")
