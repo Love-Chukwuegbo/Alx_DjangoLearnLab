@@ -48,20 +48,20 @@ def register(request):
 
 @user_passes_test(helpers.is_admin)
 def admin_view(request):
-    render(request, "admin_view.html")
+    render(request, "relationship_app/admin_view.html")
 
 
 @user_passes_test(helpers.is_librarian)
 def librarian_view(request):
-    render(request, "librarian_view.html")
+    render(request, "relationship_app/librarian_view.html")
 
 @user_passes_test(helpers.is_member)
 def member_view(request):
-    render(request, "member_view.html")
+    render(request, "relationship_app/member_view.html")
 
 
 
-@permission_required("relationship_app.can_add_book")
+@permission_required("relationship_app.can_add_book", raise_exception=True)
 def add_book(request):
     if request.method == "POST":
 
@@ -80,7 +80,7 @@ def book_detail(request, pk):
     return render(request, "relationship_app/book_detail.html",{"book" : book})
 
 
-@permission_required("relationship_app.can_change_book")
+@permission_required("relationship_app.can_change_book",raise_exception=True)
 def change_book(request,pk):
     book = get_object_or_404(Book, pk = pk)
 
@@ -96,7 +96,7 @@ def change_book(request,pk):
     
 
 
-@permission_required("relationship_app.can_delete_book")
+@permission_required("relationship_app.can_delete_book",raise_exception=True)
 def delete_book(request, pk):
     book=get_object_or_404(book, pk=pk)
     if request.method == "POST":
