@@ -47,16 +47,16 @@ def register(request):
 
 
 @user_passes_test(helpers.is_admin)
-def admin(request):
+def admin_view(request):
     render(request, "admin_view.html")
 
 
 @user_passes_test(helpers.is_librarian)
-def librarian(request):
+def librarian_view(request):
     render(request, "librarian_view.html")
 
 @user_passes_test(helpers.is_member)
-def member(request):
+def member_view(request):
     render(request, "member_view.html")
 
 
