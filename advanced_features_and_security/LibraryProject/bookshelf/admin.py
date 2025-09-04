@@ -15,5 +15,5 @@ class  CustomUserAdmin(UserAdmin):
     model = CustomUser
     add_fieldsets = ((None, {"fields":("date_of_birth",'profile_photo')})
                      ,)
-admin.site.register(CustomUser,CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Book, BookAdmin)
