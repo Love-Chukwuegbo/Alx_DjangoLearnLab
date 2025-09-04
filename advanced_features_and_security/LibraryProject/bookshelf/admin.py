@@ -11,9 +11,9 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ("title", "author")
     list_filter = ("title", "publication_year")
 
-class  ModelAdmin(UserAdmin):
+class  CustomUserAdmin(UserAdmin):
     model = CustomUser
     add_fieldsets = ((None, {"fields":("date_of_birth",'profile_photo')})
                      ,)
-admin.site.register(CustomUser,ModelAdmin)
+admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Book, BookAdmin)
